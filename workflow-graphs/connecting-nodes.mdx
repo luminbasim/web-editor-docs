@@ -1,0 +1,23 @@
+---
+title: Creating Edges between Nodes
+---
+
+Edges determine the order in which nodes are executed in our workflow. Edges in the workflow graph are directed and are created using the input/output handles edge’s nodes.
+
+The `input handle` of a node is the black circular bulb at the top of the node and the `output handle(s)` of a node are the black circular bulb(s) at the bottom of the node:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img14.png" />
+
+Each node has exactly one input handle (except for the `trigger` node which contains
+no input handles), and at least one output handle.
+
+To create an edge from `OUTPUT_NODE` to `INPUT_NODE`:
+
+1. Drag and drop the output handle of the `OUTPUT_NODE` to the input handle of the `INPUT_NODE`. In the image below, we created an edge from the `trigger` node to the `show_message_modal` node by clicking & dragging the output handle of the `trigger` node to the input handle of the `show_message_modal` node.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img15.png"
+   />
+
+> **NOTE:** _All the node types we’ve encountered so far only contain a single output handle. We will see nodes with multiple output handles when we discuss Loops and Conditionals. But for now, you can think of workflow execution as starting from the trigger node, and continuing by executing the node connected to its output handle. This process continues until the last executed node is not connected to another node._

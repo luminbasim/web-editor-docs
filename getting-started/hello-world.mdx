@@ -1,0 +1,68 @@
+---
+title: Hello World
+description: "In this section, we will create a simple “Hello World” workflow that will display a modal with the message “Hello world”."
+---
+
+## Step 1: Creating the Workflow
+
+To create your workflow:
+
+1. Navigate to https://web-editor.onrender.com/home in Chrome.
+2. Log in to your Luminai account.
+3. Click the <strong>Create Workflow</strong> button.
+4. Fill in the form as follows (see image below):
+
+   - <strong>Company:</strong> Select `company/luminai`
+   - <strong>Team:</strong> Enter your Luminai user name (Ex: If your Luminai email
+     is karl@luminai.com, then your team will be `karl`)
+   - <strong>ID:</strong> Enter `01-hello-world`
+   - <strong>Display Name:</strong> Enter `01) Hello World`
+   - <strong>Description:</strong> Enter `A simple “Hello World” workflow`
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img1.png" />
+
+5. Click the Create button.
+
+When complete, you should be redirected to the editor of your newly created workflow.
+
+## Step 2: Adding a Node to the Workflow
+
+Steps in a workflow are represented as nodes in a graph. Nodes are executed in order starting from the initial `trigger` node. In this section, we will add `Show Info Modal` node that will display the message `“Hello World”` in a modal.
+
+1.  Click the `Search` box on the left side of the editor and type `show info`.
+
+          <img style={{"maxHeight": "400px", "margin": "auto"}} src="/images/img2.png" />
+
+2.  Drag and drop the `Show Info Modal` box to the graph (see image below):
+
+    <img
+      style={{ maxHeight: "400px", margin: "auto" }}
+      src="/images/img3.png"
+    />
+    At this stage, a new node with the name `show_message_modal` will be added to
+    the graph. Note that node names in a workflow are unique.
+
+3.  Create an edge from the `trigger` node to the `show_message_modal` node by dragging the output handle of `trigger` to the input handle of `show_message_modal` (see image below).
+    <img
+      style={{ maxHeight: "400px", margin: "auto" }}
+      src="/images/img4.png"
+    />
+4.  Click the `show_message_modal` node. The node’s configuration form will popup on the right side of the editor. Fill in the form as shown below:
+    <img
+      style={{ maxHeight: "400px", margin: "auto" }}
+      src="/images/img5.png"
+    />
+5.  Click the `Submit` button.
+
+## Step 3: Saving and Testing the Workflow
+
+1. To save the workflow, click the `save icon` in the top left corner of the editor (as shown below).
+   <img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img6.png" />
+2. To test the workflow, click the `play icon` in the top left corner of the editor (as shown below).
+
+   <img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img7.png" />
+
+   The workflow should run and you should now see a modal displaying the message
+   `“Hello world”`.
+
+   <img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img8.png" />

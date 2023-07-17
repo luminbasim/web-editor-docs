@@ -95,10 +95,11 @@
           "group": "Loop Data Block",
           "pages": [
             "docs/loops/loop-data-block/intro", 
-            "docs/loops/loop-data-block/example-workflow-4",
             "docs/loops/loop-data-block/loop-data-node",
             "docs/loops/loop-data-block/loop-data-by-code",
-            "docs/loops/loop-data-block/loop-data-by-elements"
+            "docs/loops/loop-data-block/example-workflow-4",
+            "docs/loops/loop-data-block/loop-data-by-elements",
+            "docs/loops/loop-data-block/example-workflow-5"
           ]
         }
       ]

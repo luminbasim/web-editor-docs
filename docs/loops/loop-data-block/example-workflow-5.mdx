@@ -1,0 +1,147 @@
+---
+title: "Example Workflow #5"
+description: "Creating a “Loop Data Block” by Elements Loop"
+---
+
+## Step 1: Creating the Workflow
+
+1. Navigate to https://web-editor.onrender.com/home in Chrome.
+2. Log in to your Luminai account.
+3. Click the `Create Workflow` button.
+4. Fill in the form as follows (see image below):
+   - **Company**: select `company/luminai`
+   - **Team**: type your Luminai user name (if your Luminai email is karl@luminai.com, then your team will be `karl`)
+   - **ID**: type `06-loop-data-by-elements`
+   - **Display Name**: type `06) Loop Data By Elements Example`
+   - **Description**: type `Workflow that demonstrates a Loop Data by elements loop.`
+
+## Step 2: Initializing an Accumulator
+
+1. Create an `Execute Code` node and rename it `execute_code:result:init`
+2. Edit the `execute_code` node by setting the `Variable name` field to `result`
+3. Click the `Open Editor` button of the `Code` field.
+4. In the editor, add the line `return {}` (see image below).
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img78.png"
+   />
+
+5. Click `Save` in the code editor.
+6. Click `Submit` in the node configuration form.
+7. Create an edge from the `trigger` node to the `execute_code:result:init` node.
+
+## Step 3: Creating a New Tab and Waiting for It To Load
+
+1. Create a `New Tab` node
+
+2. Edit the `new_tab` node by setting the `Url.Value` field to https://news.ycombinator.com/
+
+3. Create an edge from the `execute_code:result:init` node to the `new_tab` node
+
+4. Create a `Wait Until Loaded` node
+
+5. Create an edge from the `new_tab` node to the `wait_until_loaded` node
+
+## Step 4: Creating the Loop Data by Element
+
+1.  Create a `Loop Data Block` node.
+
+2.  Edit the `loop_data` node by:
+
+    a. Setting the `Loop id` field to `titleSelector`
+
+    b. Setting the `Loop through` field to `elements`
+
+    c. Setting the `Selector.By` field to `value`
+
+    d. Setting the `Selector.Value` field to `.athing .title .titleline`
+
+    <img
+      style={{ maxHeight: "400px", margin: "auto" }}
+      src="/images/img79.png"
+    />
+
+3.  Click the `Submit` button of the node’s configuration form.
+
+4.  Create an edge from the `wait_until_loaded` node to the `loop_data` node.
+
+## Step 5: Getting the Current Article’s Title
+
+1. Create a `Get Text` node
+
+2. Edit the `get_text` node by:
+
+   a. Setting the `Variable name` field to `articleTitle`
+
+   b. Setting the `Selector.By` field to `code`
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img80.png"
+   />
+
+3. Click the `Open Editor` button of the `Selector.Code` field.
+
+4. In the code editor, add the line `` return `${storage.loopData.titleSelector.data} a` ``
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img81.png" />
+
+4. Click the `Save` button of the code editor.
+
+5. Click the `Submit` button of the node configuration’s form.
+
+6. Create an edge from the `loop_data` node to the `get_text` node.
+
+## Step 8: Closing the Loop
+
+1. Create a `Loop Data Iterator` node.
+
+2. Create an edge from the `execute_code:result:update` node to the `loop_iterator` node.
+
+3. Edit the `loop_iterator` node by setting `Loop id` to `titleSelector`
+
+4. Click the `Submit` button of the node’s configuration editor
+
+## Step 8: Closing the Hacker News Tab
+
+1. Create a `Close Tab` node
+
+2. Create an edge from the `loop_iterator` node to the `close_tab` node
+
+## Step 9: Displaying the Result
+
+1. Create a `Show Object Modal` node.
+
+2. Create an edge from the `close_tab` node to the `show_object_modal` node
+
+3. Edit the `show_object_modal` node by:
+
+   a. Setting the `Title.Value` field to `Result`
+
+   b. Setting the `Data.By` field to `Code`
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img82.png" />
+
+4. Click the `Open Editor` button of the `Data.Code` field.
+
+5. In the code editor, add the line `return storage.variables.result;`
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img83.png"
+   />
+
+6. Click the `Save` button of the code editor
+
+7. Click the `Submit` button of the node configuration form
+
+At the end of this step, your workflow should look like the image below:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img84.png" />
+
+## Step 10: Save and Run the Workflow
+
+The workflow should display a modal listing the titles of the first 30 articles that appear in Hacker News (https://news.ycombinator.com/).
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img85.png" />

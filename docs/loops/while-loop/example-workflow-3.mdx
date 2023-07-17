@@ -1,0 +1,137 @@
+---
+title: "Example Workflow #3"
+description: "Creating a While Loop"
+---
+
+We begin by creating a sample workflow that demonstrates how to create a while loop.
+
+## Step 1: Creating the Workflow
+
+1. Navigate to https://web-editor.onrender.com/home in Chrome.
+2. Log in to your Luminai account.
+3. Click the `Create Workflow` button.
+4. Fill in the form as follows (see image below):
+   - **Company**: select `company/luminai`
+   - **Team**: type your Luminai user name (if your Luminai email is karl@luminai.com, then your team will be `karl`)
+   - **ID**: type `04-while-loop`
+   - **Display Name**: type `04) While Loop Demo`
+   - **Description**: type `Workflow that demonstrates the use of the While Loop node.`
+
+## Step 2: Create a Counter Variable
+
+1. Create an `Execute Code` node and change its name to `execute_code:counter:init`.
+
+2. Edit the `execute_code:counter:init` node by setting the `Variable name` to `counter`.
+
+3. Click the `Open Editor` button of the `Code` field.
+
+4. In the code editor add the line `return 0` as shown below
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img48.png"
+   />
+
+5. Click the code editor’s `Save` button.
+
+6. Click the node configuration form’s `Submit` button.
+
+7. Create an edge from the `trigger` node to the `execute_code:counter:init` node.
+
+## Step 3: Creating the While Loop
+
+1. Create a `While Loop` node.
+
+2. Create an edge from the `execute_code` node to the `while_loop` node.
+
+3. Click the `while_loop` node to open its configuration form. Then click the `Open Editor` button of the `Predicate.Code` field.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img49.png"
+   />
+
+4. In the code editor, add the line `return storage.variables.counter < 5`.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img50.png"
+   />
+
+5. Click the `Save` button in the code editor.
+
+6. Click the `Submit` button of the node’s configuration form.
+
+## Step 4: Incrementing the Counter
+
+1. Create an `Execute Code` node and change its name to `execute_code:counter:increment`.
+
+2. Create a `loopFrom` edge from the `while_loop` node to the `execute_code:counter:increment` node by dragging the left output handle of the `while_loop` node to the input handle of the `execute_code:counter:increment` node.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img51.png"
+   />
+
+3. Create an edge from the `execute_code:counter:increment` node to the `while_loop`
+   node:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img52.png"
+   />
+
+4. Edit the `execute_code:counter:increment` node by setting the `Variable name` to `counter`
+
+5. Click the `Open Editor` button of the `Code` field.
+
+6. In the code editor add the line `return storage.variables.counter + 1`
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img53.png"
+   />
+
+7. Click the code editor’s `Save` button.
+
+8. Click the node configuration form’s `Submit` button.
+
+## Step 5: Displaying the Value of the Counter
+
+1. Create a `Show Info Modal` node.
+
+2. Create an `exitFrom` edge from the the `while_loop` node to the `show_message_modal` node by dragging the right output handle of the `while_loop` node to the input handle of the `show_message_modal` node.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img54.png"
+   />
+
+3. Edit the `show_message_modal` node by setting the form fields to the values shown below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img55.png"
+   />
+
+4. Click the `Open Editor` button of the `Code` field.
+
+5. In the code editor, add the line `` return `${storage.variables.counter}` `` as shown below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img56.png"
+   />
+
+   At the end of this step, your workflow should look like the image below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img57.png"
+   />
+
+## Step 6: Save and Run the Workflow
+
+Note that the workflow should display the modal below:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img58.png" />

@@ -1,0 +1,155 @@
+---
+title: "Example Workflow #4"
+description: "Creating a “Loop Data Block” by Code Loop"
+---
+
+## Step 1: Creating the Workflow
+
+1. Navigate to https://web-editor.onrender.com/home in Chrome.
+2. Log in to your Luminai account.
+3. Click the `Create Workflow` button.
+4. Fill in the form as follows (see image below):
+   - **Company**: select `company/luminai`
+   - **Team**: type your Luminai user name (if your Luminai email is karl@luminai.com, then your team will be `karl`)
+   - **ID**: type `05-loop-data-by-code`
+   - **Display Name**: type `05) Loop Data By Code Example`
+   - **Description**: type `Workflow that demonstrates a Loop Data by code loop.`
+
+## Step 2: Creating an Array of Strings
+
+1. Create an `Execute Code` node and rename it `execute_code:list`
+
+2. Edit the `execute_code:list` node by setting the `Variable name` field to `list`
+
+3. Click the `Open Editor` button of the `Code` field.
+
+4. In the editor, add the line `return [ ‘a’, ‘bc’, ‘def’ ]`.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img61.png"
+   />
+
+5. Click `Save` in the code editor.
+
+6. Click `Submit` in the node configuration form.
+
+7. Create an edge from the `trigger` node to the `execute_code:list` node.
+
+## Step 3: Initializing an Accumulator
+
+1. Create an `Execute Code` node and rename it `execute_code:result:init`
+
+2. Edit the `execute_code` node by setting the `Variable name` field to `result`
+
+3. Click the `Open Editor` button of the `Code` field.
+
+4. In the editor, add the line `return {}` (see image below).
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img62.png"
+   />
+
+5. Click `Save` in the code editor.
+
+6. Click `Submit` in the node configuration form.
+
+7. Create an edge from the `execute_code:list` node to the `execute_code:result:init` node.
+
+## Step 4: Creating the Loop Data by Code Loop
+
+1. Create a Loop Data Block node.
+
+2. Edit the loop_data node by:
+
+   a. Setting the Loop id field to word
+
+   b. Setting the Loop through field to code
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img63.png"
+   />
+
+3. Click the `Open Editor` button of the `Code` field.
+
+4. In the code editor, add the line `return storage.variables.list`
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img64.png"
+   />
+
+5. Create an edge from the `execute_code:result:init` node to `loop_data` node.
+
+## Step 5: Using loopData to Update the Accumulator in the Loop
+
+1. Create an `Execute Code` node and rename it `execute_code:result:update`
+
+2. Create an edge from the `loop_data` node to `execute_code:result:update`
+
+3. Edit the `execute_code:result:update` by setting `Variable name` to `result`
+
+4. Click the `Open Editor` button of the `Code` field.
+
+5. Update the code in the code editor as shown below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img65.png"
+   />
+
+6. Click the `Save` button of the code editor.
+
+7. Click the `Submit` button of the node configuration form.
+
+## Step 6: Closing the Loop
+
+1. Create a `Loop Data Iterator` node.
+
+2. Create an edge from the `execute_code:result:update` node to the `loop_iterator` node.
+
+3. Edit the `loop_iterator` node by setting the `Loop id` field to `word`
+
+4. Click the `Submit` button of the node configuration form.
+
+## Step 7: Displaying the Result
+
+1. Create a `Show Object Modal` node.
+
+2. Create an edge from the `loop_iterator` node to the `show_object_modal` node
+
+3. Edit the `show_object_modal` node by:
+
+   a. Setting the `Title.Value` field to `Result`
+
+   b. Setting the `Data.By` field to `Code`
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img66.png"
+   />
+
+4. Click the `Open Editor` button of the `Data.Code` field.
+
+5. In the code editor, add the line `return storage.variables.result;`
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img67.png"
+   />
+
+6. Click the `Save` button of the code editor
+
+7. Click the `Submit` button of the node configuration form
+
+At the end of this step, your workflow should look like the image below:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img68.png" />
+
+## Step 8: Save and Run the Workflow
+
+Note that the workflow should display the modal below:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img69.png" />

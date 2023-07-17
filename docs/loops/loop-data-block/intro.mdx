@@ -1,0 +1,13 @@
+---
+title: Introduction to Loop Data Block Node
+---
+
+A structure similar to “for-each loops” can be defined using the **Loop Data Block** node. These nodes will loop through an array of elements executing the sequence of nodes in the loop once for each item in the array. In addition, the current element of the array being iterated will be available in `loopData` storage.
+
+There are two primary ways of defining a **Loop Data Block** node:
+
+- `code`: Provide a storage code expression that returns an array.
+
+- `elements`: Provide a selector.
+
+We will first provide examples of both **Loop Data Block** types.

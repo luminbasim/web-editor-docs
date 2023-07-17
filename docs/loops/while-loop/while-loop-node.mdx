@@ -1,0 +1,30 @@
+---
+title: "While loop node"
+description: "Creating a Loop with the “While Loop” Node"
+---
+
+While loops can be created using the **While Loop** node.
+
+The node’s configuration form consists of a single mandatory field:
+
+- **Predicate.Code:** a code storage expression whose return value is a `boolean`. This function is run whenever the node is executed, and its return value is used to determine whether the loop should continue (if the function returns `true`) or if the loop should exit (if the function returns `false`).
+
+The node has two output handles:
+
+- `loopFrom`: The node connected to this handle is run if the expression in `Predicate.Code` returns `true`. Note that a node must be connected to this handle.
+
+- `exitFrom`: The node connected to this handle is run if the expression in `Predicate.Code` returns `false`. If no node is connected to this handle and `Predicate.Code` returns `false`, then the workflow will end.
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img59.png" />
+
+Any node following the node connected to the `loopFrom` edge can be used to close the loop by connecting the output handle of that node to the while loop node.
+
+For example, in the image below, if the `Predicate.Code` function of the `while_loop` returns `true`, then:
+
+1. The `first_node` is executed.
+2. Then the `last_node` is executed.
+3. Then the `while_loop` is executed again.
+
+The above loop (1) - (3) continues as long as the `Predicate.Code` function of the `while_loop` returns `true`.
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img60.png" />

@@ -1,0 +1,38 @@
+---
+title: "Loop Data by Elements"
+---
+
+The **Loop Data Block** node can also be used (in a sense) to iterate through an array of DOM elements.
+
+To do this:
+
+1. Create a **Loop Data Block**.
+
+2. Edit the newly created node by setting the `Loop through` field to selector.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img73.png"
+   />
+
+3. Specify the selector for the elements you want to iterate through (this can be specified via a storage code expression).
+
+4. Click the `Submit` button of the node configuration form.
+
+When executed, the **Loop Data Block** will use the provided selector, and add a unique attribute to each element satisfying the selector. An array of selectors targeting these attributes will be created; each selector will be iterated through in the loop.
+
+For example, for the HTML document below,
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img74.png" />
+
+if we loop through the p tag elements using the Loop Data Block shown below:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img75.png" />
+
+Then when the Loop Data Block is executed, the workflow engine will add a luminai-rpa-loop attribute to every element satisfying the selector (in this case, every element with the p tag). For each element satisfying the selector, the attribute’s value will be set to “{YOUR_LOOP_ID}--{INDEX_OF_ELEMENT}”. So, assuming our loopId is sample, our HTML document will become:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img76.png" />
+
+The loop will then iterate through an array containing selectors that target each element in order:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img77.png" />

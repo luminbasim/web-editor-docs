@@ -1,0 +1,61 @@
+---
+title: "Loop Data node"
+---
+
+## Creating a For-Each Loop with the “Loop Data Block” Node
+
+“For-each” loops can be created using the **Loop Data Block** node and closed with the **Loop Data Iterator** nodes.
+
+Every **Loop Data Block** and **Loop Data Iterator** node has a mandatory `Loop id` field. This identifier can only consist of alphanumeric characters and underscores. Nodes between a `Loop Data Block` and `Loop Data Iterator` node with matching `Loop ids` are part of the same loop.
+
+For example, assuming `loop_data:id:sample` and `loop_iterator:id:sample` have their `Loop id` fields set to `sample` in the image below:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img70.png" />
+
+The nodes `new_tab:in_loop` and `execute_code:in_loop` are part of the loop defined by the `loop_data:id:sample` and `loop_iterator:id:sample` nodes (which both have the `Loop id` set to `sample`). But the `close_tab:outside_loop` is not part of this loop.
+
+When a `Loop Data Block` node is executed, it creates an array (whose creation will be discussed later), which will be used as the data source for the loop. For each element in the array, the workflow will execute every node between the `Loop Data Block` and the `Loop Data Iterator` nodes (with matching Loop ids).
+
+When every item in the array has been iterated, the loop will end, and the node connected to the `Loop Data Iterator` node’s output handle will be executed. In the image above, the `close_tab:outside_loop` will be executed after the loop has been executed once for every item in the array.
+
+So if loop_iterator:id:sample node is executed and returns an array containing 3 items, then the loop executes as follows:
+
+    1. `new_tab:in_loop` executes
+
+    2. `execute_code:in_loop` executes
+
+    3. `loop_iterator:id:sample` executes and checks if we have run the loop for each item in the array (in this case for all 3 items).
+
+        a. If not, then go to step (1) for the next item in the array
+
+        b. If yes, then execute the next node, in this case the `close_tab:outside_loop` node.
+
+## Accessing the Iterator and Current Index in loopData in Storage
+
+The current value of the iterator will be available in workflow storage for every node inside the **Loop Data Block** loop. The iterator can be accessed in storage code expressions via `storage.loopData.{LOOP_ID}` or `storage.loopData[‘{LOOP_ID}’]`.
+
+The object stored in this entry contains two properties:
+
+    - **data:** which contains the current value of the iterator.
+
+    - **index:** which is the current index in the array
+
+For example, in the loop below:
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img71.png" />
+
+If `loop_data:id:sample` node is executed and returns an array of three strings, say `[“a”, “b”, “c”]`. Then:
+
+1. On the first iteration, `storage.loopData.sample` will contain the properties:
+
+   - **data** : “a”
+   - **index** : 0
+
+2. On the second iteration, `storage.loopData.sample` will contain the properties:
+
+   - **data** : “b”
+   - **index** : 1
+
+3. On the third and final iteration, `storage.loopData.sample` will contain the properties:
+   - **data** : “c”
+   - **index** : 2

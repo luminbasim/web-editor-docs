@@ -79,6 +79,29 @@
         "docs/browser-environment/current-tab", 
         "docs/browser-environment/example-workflow"
       ]
+    },
+    {
+      "group": "Loops",
+      "pages": [
+        "docs/loops/intro", 
+        {
+          "group": "While Loop",
+          "pages": [
+            "docs/loops/while-loop/while-loop-node", 
+            "docs/loops/while-loop/example-workflow-3"
+          ]
+        }, 
+        {
+          "group": "Loop Data Block",
+          "pages": [
+            "docs/loops/loop-data-block/intro", 
+            "docs/loops/loop-data-block/example-workflow-4",
+            "docs/loops/loop-data-block/loop-data-node",
+            "docs/loops/loop-data-block/loop-data-by-code",
+            "docs/loops/loop-data-block/loop-data-by-elements"
+          ]
+        }
+      ]
     }
   ],
   "footerSocials": {

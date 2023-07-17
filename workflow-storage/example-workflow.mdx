@@ -1,0 +1,81 @@
+---
+title: "Example: Storage Workflow"
+---
+
+We begin by creating a sample workflow that demonstrates the process of writing a variable to storage using the Execute Code node and reading the variable from subsequent nodes.
+
+## Step 1: Creating the Workflow
+
+1. Navigate to https://web-editor.onrender.com/home in Chrome.
+2. Log in to your Luminai account.
+3. Click the `Create Workflow` button.
+4. Fill in the form as follows (see image below):
+   - **Company**: select `company/luminai`
+   - **Team**: type your Luminai user name (if your Luminai email is karl@luminai.com, then your team will be `karl`)
+   - **ID**: type `02-workflow-variables`
+   - **Display Name**: type `02) Workflow Variables Demo`
+   - **Description**: type `Workflow that demonstrates the use of workflow variables.`
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img27.png" />
+
+## Step 2: Creating the variable
+
+In this section we will write the variable `message` to workflow storage using the `Execute Code` node.
+
+1. Add an `Execute Code` node to the graph.
+
+2. Create an edge from the `trigger` node to the `execute_code` node.
+
+3. Click the `execute_code` node. In the node’s configuration form, set the `Variable name` field to `message` as shown below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img28.png"
+   />
+
+4. Click the `Open Editor` button next to the `Code` field.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img29.png"
+   />
+
+5. In the popup code editor, edit the function to return the string `Message from execute_code block` then click the `Save` button as shown below.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img30.png"
+   />
+
+6. Click the `Submit` button in the node’s configuration form.
+
+## Step 3: Reading the variable
+
+In this section we will display a message using the value stored in the `message` variable we created.
+
+1. Create a `Show Info Modal` node.
+
+2. Create an edge from the `execute_code` node to the `show_message_modal` node.
+
+3. Click the `show_message_modal` node. Fill in its configuration form with values shown below. In particular, note the value of the `Message.By` field (`code`).
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img31.png"
+   />
+4. Click on the `Open Editor` button next to the `Message.Code` field as shown below.
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img32.png"
+   />
+5. A code editor will popup for the `Message.Code` field. In the editor, add the line `return storage.variables.message` and then click the `Save` button as shown below.
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img33.png"
+   />
+6. Click the `Submit` button in the node configuration form.
+
+## Step 4: Save and Run the Workflow
+
+Note that the workflow should display a modal whose message is the value we stored the `message` variable in storage (in our case, it is `Message from execute_code block`).
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img34.png" />

@@ -1,0 +1,24 @@
+---
+title: Creating Variables Using the “Execute Code” Node
+sidebarTitle: Execute code
+---
+
+Variables can be created using the `Execute Code` node. Any node that follows this node will have access to the created variable.
+
+The node’s configuration form consists of two mandatory fields:
+
+- **Variable name:** The name of the variable to create. Variable names can only consist of alphanumeric characters and underscores. Note that if the variable with the given name is already in storage, this will overwrite its current value on execution.
+
+- **Code:** The function that is run when the `Execute Code` node is executed (this function will be referred to as the `storage code expression`). The return value of the code expression is stored in the variable specified by the `Variable name` field.
+
+For example, in the image below, when the `execute_code` node is executed, the workflow will run the function specified by `Code` and store the return value in the variable `message`. The nodes following `execute_code` (i.e. `show_message_modal:first_message` and `show_message_modal:second_message`) will have access to the `message` variable.
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img35.png" />
+
+## Parameter of the Storage Code Expression
+
+The storage code expression parameter specifies a `storage` object that contains values that are currently stored in workflow storage. If the variable `variableName` was previously written to storage, we can access its value in the expression via `storage.variables.variableName` or `storage.variables[‘variableName’]` (in particular, `storage.variables` is a key-value store whose keys are variable names and whose values are the corresponding variables’ value).
+
+For example, in the image below, the variable `message` was written to workflow storage by a previous node. Any subsequent node can then access the variable `message`. In this case, we are creating an `Execute Code` block that will create a variable whose value is the length of the `message` (via. `message.length`).
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img36.png" />

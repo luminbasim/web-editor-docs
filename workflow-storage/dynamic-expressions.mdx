@@ -1,0 +1,26 @@
+---
+title: "Dynamic Expression Fields: Storage Code Expressions in Other Node Types"
+sidebarTitle: "Dynamic Expression Fields"
+---
+
+Many node types have configuration fields that can be specified by a storage code expression similar to the `Code` field of an `Execute Code` node (e.g. the `Message` field of the `Show Info Modal` node can be specified with a storage code expression).
+
+In particular, you can specify a function whose:
+
+- Parameter has a `storage` object, which contains the values currently stored in workflow storage.
+- Return value is used as the value of the field.
+
+Node configuration fields that can be specified by a code expression are called `dynamic expression fields`. Dynamic expression fields can be identified by the presence of a `By` input and a following `Value` (or `Code` if code is selected) input within its form field. For example, in the node configuration form below:
+
+- The fields `Header`, `Title`, and `Message` are all dynamic expression fields.
+- The fields `Type` and `Tab target` are not.
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img37.png" />
+
+To specify the value of a dynamic expression field `FieldName` with a storage code expression:
+
+1. Select `code` in the `FieldName.By` field.
+
+2. Click the `Open Editor` button next to the `FieldName.Code` field. This will open the editor for this code expression.
+
+3. Use the editor to specify your function. Then click the editor’s `Save` button.

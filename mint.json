@@ -36,7 +36,6 @@
     },
     {
       "group": "Workflow Graphs",
-      "icon": "share-nodes",
       "pages": [
         "workflow-graphs/intro", 
         "workflow-graphs/create-node", 
@@ -45,6 +44,28 @@
         "workflow-graphs/connecting-nodes",
         "workflow-graphs/remove-node",
         "workflow-graphs/remove-edge"
+      ]
+    },
+    {
+      "group": "Workflow Operations",
+      "pages": [
+        "workflow-operations/create-workflow", 
+        "workflow-operations/sample-workflows", 
+        "workflow-operations/edit-existing", 
+        "workflow-operations/save-workflow", 
+        "workflow-operations/test-workflow",
+        "workflow-operations/publish-workflow"
+      ]
+    },
+    {
+      "group": "Workflow Storage",
+      "pages": [
+        "workflow-storage/intro", 
+        "workflow-storage/example-workflow", 
+        "workflow-storage/execute-code", 
+        "workflow-storage/dynamic-expressions", 
+        "workflow-storage/storage-lookup",
+        "workflow-storage/other-node-interactions"
       ]
     }
   ],

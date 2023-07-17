@@ -32,49 +32,52 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["getting-started/setup", "getting-started/hello-world"]
+      "pages": [
+        "docs/getting-started/setup", 
+        "docs/getting-started/hello-world"
+      ]
     },
     {
       "group": "Workflow Graphs",
       "pages": [
-        "workflow-graphs/intro", 
-        "workflow-graphs/create-node", 
-        "workflow-graphs/node-behavior", 
-        "workflow-graphs/renaming-node", 
-        "workflow-graphs/connecting-nodes",
-        "workflow-graphs/remove-node",
-        "workflow-graphs/remove-edge"
+        "docs/workflow-graphs/intro", 
+        "docs/workflow-graphs/create-node", 
+        "docs/workflow-graphs/node-behavior", 
+        "docs/workflow-graphs/renaming-node", 
+        "docs/workflow-graphs/connecting-nodes",
+        "docs/workflow-graphs/remove-node",
+        "docs/workflow-graphs/remove-edge"
       ]
     },
     {
       "group": "Workflow Operations",
       "pages": [
-        "workflow-operations/create-workflow", 
-        "workflow-operations/sample-workflows", 
-        "workflow-operations/edit-existing", 
-        "workflow-operations/save-workflow", 
-        "workflow-operations/test-workflow",
-        "workflow-operations/publish-workflow"
+        "docs/workflow-operations/create-workflow", 
+        "docs/workflow-operations/sample-workflows", 
+        "docs/workflow-operations/edit-existing", 
+        "docs/workflow-operations/save-workflow", 
+        "docs/workflow-operations/test-workflow",
+        "docs/workflow-operations/publish-workflow"
       ]
     },
     {
       "group": "Workflow Storage",
       "pages": [
-        "workflow-storage/intro", 
-        "workflow-storage/example-workflow", 
-        "workflow-storage/execute-code", 
-        "workflow-storage/dynamic-expressions", 
-        "workflow-storage/storage-lookup",
-        "workflow-storage/other-node-interactions"
+        "docs/workflow-storage/intro", 
+        "docs/workflow-storage/example-workflow", 
+        "docs/workflow-storage/execute-code", 
+        "docs/workflow-storage/dynamic-expressions", 
+        "docs/workflow-storage/storage-lookup",
+        "docs/workflow-storage/other-node-interactions"
       ]
     },
     {
       "group": "Browser Environment",
       "pages": [
-        "browser-environment/intro", 
-        "browser-environment/initial-tab", 
-        "browser-environment/current-tab", 
-        "browser-environment/example-workflow"
+        "docs/browser-environment/intro", 
+        "docs/browser-environment/initial-tab", 
+        "docs/browser-environment/current-tab", 
+        "docs/browser-environment/example-workflow"
       ]
     }
   ],

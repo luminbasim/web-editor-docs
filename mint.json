@@ -67,6 +67,15 @@
         "workflow-storage/storage-lookup",
         "workflow-storage/other-node-interactions"
       ]
+    },
+    {
+      "group": "Browser Environment",
+      "pages": [
+        "browser-environment/intro", 
+        "browser-environment/initial-tab", 
+        "browser-environment/current-tab", 
+        "browser-environment/example-workflow"
+      ]
     }
   ],
   "footerSocials": {

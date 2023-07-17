@@ -1,0 +1,132 @@
+---
+title: "Example Workflow #2"
+---
+
+In this sample workflow, we will demonstrate how the current and initial tabs are tracked in the workflow browser’s environment.
+
+## Step 1: Creating the Workflow
+
+1. Navigate to https://web-editor.onrender.com/home in Chrome.
+2. Log in to your Luminai account.
+3. Click the `Create Workflow` button.
+4. Fill in the form as follows (see image below):
+   - **Company**: select `company/luminai`
+   - **Team**: type your Luminai user name (if your Luminai email is karl@luminai.com, then your team will be `karl`)
+   - **ID**: type `03-browser-environment`
+   - **Display Name**: type `03) Browser Environment Demo`
+   - **Description**: type `Workflow that demonstrates the tracking of current and initial tabs.`
+
+<img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img39.png" />
+
+## Step 2: Getting the Url of the Current (Initial) Tab
+
+1. Create a `Get Environment Url` node and rename the node to `get_environment_url:first`.
+
+2. Edit the `get_environment_url:first` by setting the `Variable name` field to `first`. Your node configuration form should look like the image below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img40.png"
+   />
+
+3. Click the node configuration form’s `Submit` button.
+
+4. Create an edge from the `trigger` node to the `get_environment_url:first` node.
+
+## Step 3: Navigating to a new tab
+
+1. Create a `Create New Tab` node.
+
+2. Edit the `new_tab` node by setting the `Url.Value` field to https://news.ycombinator.com/. Your node configuration form should look like the image below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img41.png"
+   />
+
+3. Click the node configuration form’s `Submit` button.
+
+4. Create an edge from the `get_environment_url:first` node to the `new_tab` node.
+
+5. Create a `Wait Until Loaded` node.
+
+6. Create an edge from the `new_tab` node to the `wait_until_loaded` node.
+
+## Step 4: Getting the Url of the New Current Tab
+
+1. Create a `Get Environment Url` node and rename the node to `get_environment_url:second`.
+
+2. Edit the `get_environment_url:second` by setting the `Variable name` field to `second`. Your node configuration form should look like the image below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img42.png"
+   />
+
+3. Click the node configuration form’s `Submit` button.
+
+4. Create an edge from the `wait_until_loaded` node to the `get_environment_url:second` node.
+
+## Step 5: Setting the Current Tab to the Workflow’s Initial Tab
+
+1. Create a `Set Current Tab` node.
+
+2. Edit the `set_current_tab` by setting the `By` field to `initial`. Your node configuration form should look like the image below:
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img43.png"
+   />
+3. Create an edge from the `get_environment_url:second` node to the `set_current_tab` node.
+
+## Step 6: Getting the Url of the Current Tab
+
+1. Create a `Get Environment Url` node and rename the node to `get_environment_url:third`.
+
+2. Edit the `get_environment_url:third` by setting the `Variable name` field to `third`. Your node configuration form should look like the image below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img44.png"
+   />
+
+3. Click the node configuration form’s `Submit` button.
+
+4. Create an edge from the `set_current_tab` node to the `get_environment_url:third` node.
+
+## Step 7: Display the read urls
+
+1. Create a `Show Object Modal` node.
+
+2. Edit the `show_object_modal` node by first setting the `Title.Value` field to `Environment Urls`.
+
+3. Click the `Open Editor` button in the `Data.Code` field.
+
+4. In the code editor, add the line `return storage.variables` to the function as shown below.
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img45.png"
+   />
+
+5. Click the code editor’s `Save` button.
+
+6. Click the node configuration form’s `Submit` button.
+
+7. Create an edge from the `get_environment_url:third` node to the `show_object_modal` node.
+
+   At the end of this step, your workflow should look like the image below:
+
+   <img
+     style={{ maxHeight: "400px", margin: "auto" }}
+     src="/images/img46.png"
+   />
+
+## Step 8: Save and Run the Workflow
+
+Note that the workflow should create a new tab and navigate to https://news.ycombinator.com/ in that tab. It should then display a modal with:
+
+- **First** set to the initial tab’s url
+- **Second** set to https://news.ycombinator.com/
+- **Third** set to the initial tab’s url
+
+  <img style={{ maxHeight: "400px", margin: "auto" }} src="/images/img47.png" />

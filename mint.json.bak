@@ -1,0 +1,113 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Luminai Web-Editor Reference",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#9563FF",
+    "light": "#AE87FF",
+    "dark": "#0D001D",
+    "background": {
+      "dark": "#090014"
+    },
+    "anchors": {
+      "from": "#FF7F57",
+      "to": "#9563FF"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "https://app.slack.com/client/T01DLBKHX1C/C03QD14EEMC",
+      "type": "link"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Web Editor",
+    "url": "https://web-editor.onrender.com"
+  },
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "getting-started/setup", 
+        "getting-started/hello-world"
+      ]
+    },
+    {
+      "group": "Workflow Graphs",
+      "pages": [
+        "workflow-graphs/intro", 
+        "workflow-graphs/create-node", 
+        "workflow-graphs/node-behavior", 
+        "workflow-graphs/renaming-node", 
+        "workflow-graphs/connecting-nodes",
+        "workflow-graphs/remove-node",
+        "workflow-graphs/remove-edge"
+      ]
+    },
+    {
+      "group": "Workflow Operations",
+      "pages": [
+        "workflow-operations/create-workflow", 
+        "workflow-operations/sample-workflows", 
+        "workflow-operations/edit-existing", 
+        "workflow-operations/save-workflow", 
+        "workflow-operations/test-workflow",
+        "workflow-operations/publish-workflow"
+      ]
+    },
+    {
+      "group": "Workflow Storage",
+      "pages": [
+        "workflow-storage/intro",
+        "workflow-storage/example-workflow", 
+        "workflow-storage/execute-code", 
+        "workflow-storage/dynamic-expressions", 
+        "workflow-storage/storage-lookup",
+        "workflow-storage/other-node-interactions"
+      ]
+    },
+    {
+      "group": "Browser Environment",
+      "pages": [
+        "browser-environment/intro", 
+        "browser-environment/initial-tab", 
+        "browser-environment/current-tab", 
+        "browser-environment/example-workflow"
+      ]
+    },
+    {
+      "group": "Loops",
+      "pages": [
+        "loops/intro", 
+        {
+          "group": "While Loop",
+          "pages": [
+            "loops/while-loop/while-loop-node", 
+            "loops/while-loop/example-workflow-3"
+          ]
+        }, 
+        {
+          "group": "Loop Data Block",
+          "pages": [
+            "loops/loop-data-block/intro", 
+            "loops/loop-data-block/loop-data-node",
+            "loops/loop-data-block/loop-data-by-code",
+            "loops/loop-data-block/example-workflow-4",
+            "loops/loop-data-block/loop-data-by-elements",
+            "loops/loop-data-block/example-workflow-5"
+          ]
+        }
+      ]
+    }
+  ],
+  "footerSocials": {
+    "twitter": "https://twitter.com/luminai",
+    "github": "https://github.com/DigitalBrainApp",
+    "linkedin": "https://www.linkedin.com/company/luminai"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Web-Editor Reference",
+  "name": "Reference",
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#9563FF",
@@ -21,10 +21,5 @@
         "getting-started"
       ]
     }
-  ],
-  "footerSocials": {
-    "twitter": "https://twitter.com/luminai",
-    "github": "https://github.com/DigitalBrainApp",
-    "linkedin": "https://www.linkedin.com/company/luminai"
-  }
+  ]
 }

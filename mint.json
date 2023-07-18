@@ -1,10 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Web-Editor Reference",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
   "favicon": "/favicon.png",
   "colors": {
     "primary": "#9563FF",
@@ -18,7 +14,14 @@
       "to": "#9563FF"
     }
   },
-  "navigation": [],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "getting-started"
+      ]
+    }
+  ],
   "footerSocials": {
     "twitter": "https://twitter.com/luminai",
     "github": "https://github.com/DigitalBrainApp",
